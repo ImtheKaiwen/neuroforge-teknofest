@@ -1,0 +1,23 @@
+# Deep Learning Core
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Explainable AI (XAI)
+grad-cam>=1.4.8
+
+# Data Manipulation & Math
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Medical Imaging Libraries
+nibabel>=5.1.0           # BraTS datasetindeki .nii.gz (NIfTI) dosyaları için
+pydicom>=2.4.0           # TCGA MRI DICOM dosyaları için
+openslide-python>=1.3.0  # TCGA Patoloji WSI (.svs) slaytlarını okumak için
+scikit-image>=0.21.0     # Gelişmiş görüntü işleme
+Pillow>=10.0.0           # Temel 2D patch işlemleri
+
+# Utility & Machine Learning
+scikit-learn>=1.3.0      # Metrikler (F1, AUC) ve veri bölme
+h5py>=3.9.0              # Çıkarılan patoloji patch'lerini hızlıca diskte tutmak için
+tqdm>=4.65.0             # Eğitim döngüsünde progress bar görmek için
+matplotlib>=3.7.0        # Grad-CAM ve loss grafikleri çizimi
