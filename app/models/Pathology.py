@@ -34,15 +34,14 @@ class PathologyEncoder(nn.Module):
         x = x.view(-1, c, h, w) # Patchleri tek boyuta düzle
         
         feats = self.feature_extractor(x)
-        feats = feats.view(feats.size(0), -1) # (B*N, 512)
+        feats = feats.view(b, n, -1) # (B, N, 512)
         
         # Gated Attention Hesaplaması
         A_V = self.attention_V(feats)
         A_U = self.attention_U(feats)
-        A = self.attention_weights(A_V * A_U) # Element-wise çarpım
-        A = torch.transpose(A, 1, 0) # (1, B*N)
-        A = F.softmax(A, dim=1) 
+        A = self.attention_weights(A_V * A_U) # (B, N, 1)
+        A = F.softmax(A, dim=1)
         
         # Agregasyon
-        weighted_feats = torch.mm(A, feats) # (1, 512)
+        weighted_feats = torch.sum(A * feats, dim=1) # (B, 512)
         return self.fc(weighted_feats)

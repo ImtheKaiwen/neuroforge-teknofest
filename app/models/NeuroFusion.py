@@ -2,7 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torchvision.models import resnet18, ResNet18_Weights
-from app.models import RadiologyEncoder, PathologyEncoder
+from .Pathology import PathologyEncoder
+from .Radiology import RadiologyEncoder
 
 class NeuroFusionModel(nn.Module):
     def __init__(self, num_classes=3):
